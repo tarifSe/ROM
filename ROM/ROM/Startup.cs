@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ROM.DBContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace ROM
 {
@@ -24,6 +26,8 @@ namespace ROM
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<ROMDatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ROMDatabaseContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
