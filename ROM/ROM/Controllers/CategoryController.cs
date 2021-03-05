@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ROM.DBContext;
+using ROM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,19 @@ namespace ROM.Controllers
         public IActionResult Save()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Save(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(category);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            
+            return View(category);
         }
     }
 }
