@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(m => m.Name)</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,10 @@
             <tr>
                 <td>
                     @Html.DisplayFor(c => category.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@category.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@category.Id" class="btn btn-danger">Details</a>
                 </td>
             </tr>
         }
