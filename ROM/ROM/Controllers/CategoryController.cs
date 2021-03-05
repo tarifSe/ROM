@@ -18,7 +18,7 @@ namespace ROM.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Categories.ToList());
         }
 
         public IActionResult Save()
