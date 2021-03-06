@@ -69,7 +69,26 @@ namespace ROM.Controllers
 
         public IActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var category = _context.Categories.FirstOrDefault(d => d.Id == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var category = _context.Categories.Find(id);
+            _context.Remove(category);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
