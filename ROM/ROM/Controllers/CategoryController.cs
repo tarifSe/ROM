@@ -39,9 +39,32 @@ namespace ROM.Controllers
             return View(category);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var category = _context.Categories.Find(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(category);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            
+            return View(category);
         }
     }
 }
