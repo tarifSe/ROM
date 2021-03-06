@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ROM.DBContext;
+using ROM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,11 @@ namespace ROM.Controllers
 {
     public class MembersController : Controller
     {
+        private readonly ROMDatabaseContext _context;
+        public MembersController(ROMDatabaseContext romDbContext)
+        {
+            _context = romDbContext;
+        }
         public IActionResult Index()
         {
             return View();
