@@ -38,5 +38,10 @@ namespace ROM.Controllers
             
             return View(category);
         }
+
+        public IActionResult Edit()
+        {
+            return View();
+        }
     }
 }
