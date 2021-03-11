@@ -5,16 +5,16 @@
 
 <h1 class="alert alert-info">Members Information</h1>
 
-<table class="table table-dark">
-    <thea>
+<table class="table table-dark table-hover">
+    <thead>
         <tr>
             <th>@Html.DisplayNameFor(m => m.Code)</th>
             <th>@Html.DisplayNameFor(m => m.Name)</th>
             <th>@Html.DisplayNameFor(m => m.Email)</th>
             <th>@Html.DisplayNameFor(m => m.Phone)</th>
-            <th>@Html.DisplayNameFor(m => m.Category.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.CategoryId)</th>
         </tr>
-    </thea>
+    </thead>
     <tbody>
         @foreach (var member in Model)
         {
@@ -32,7 +32,7 @@
                 @Html.DisplayFor(m => member.Phone)
             </td>
             <td>
-                @Html.DisplayFor(m => member.CategoryId)
+                @Html.DisplayFor(m => member.Category.Name)
             </td>
         </tr>
         }

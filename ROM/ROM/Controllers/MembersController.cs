@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ROM.DBContext;
 using ROM.Models;
 using System;
@@ -17,7 +18,7 @@ namespace ROM.Controllers
         }
         public IActionResult Index()
         {
-            return View(_context.Members.ToList());
+            return View(_context.Members.Include(c => c.Category).ToList());
         }
     }
 }
