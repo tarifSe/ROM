@@ -5,20 +5,26 @@
 
 <h1 class="alert alert-info">Members Information</h1>
 
+<p><a asp-action="Add">Add new member</a></p>
+
 <table class="table table-dark table-hover">
     <thead>
         <tr>
+            <th>SL/No</th>
             <th>@Html.DisplayNameFor(m => m.Code)</th>
             <th>@Html.DisplayNameFor(m => m.Name)</th>
             <th>@Html.DisplayNameFor(m => m.Email)</th>
             <th>@Html.DisplayNameFor(m => m.Phone)</th>
             <th>@Html.DisplayNameFor(m => m.CategoryId)</th>
+            @*<th>Action</th>*@
         </tr>
     </thead>
     <tbody>
+        @{ var sl = 1;}
         @foreach (var member in Model)
         {
         <tr>
+            <td>@(sl++)</td>
             <td>
                 @Html.DisplayFor(m => member.Code)
             </td>

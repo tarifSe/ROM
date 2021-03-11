@@ -20,5 +20,10 @@ namespace ROM.Controllers
         {
             return View(_context.Members.Include(c => c.Category).ToList());
         }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
     }
 }
