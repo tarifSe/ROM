@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ROM.DBContext;
 using ROM.Models;
@@ -40,6 +41,40 @@ namespace ROM.Controllers
 
             aMember.Categories = _context.Categories.ToList();
             return View(aMember);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var members = _context.Members.Find(id);
+            var categories = _context.Categories.ToList();
+            if (members == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Category = new SelectList(categories, "Id", "Name");
+            return View(members);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Member member)
+        {
+            var categories = _context.Categories.ToList();
+            ViewBag.Category = new SelectList(categories, "Id", "Name");
+
+            if (ModelState.IsValid)
+            {
+                _context.Members.Update(member);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            
+            return View(member);
         }
     }
 }
