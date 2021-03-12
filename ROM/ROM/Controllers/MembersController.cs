@@ -27,5 +27,19 @@ namespace ROM.Controllers
             aMember.Categories = _context.Categories.ToList();
             return View(aMember);
         }
+
+        [HttpPost]
+        public IActionResult Add(Member member)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Members.Add(member);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+
+            aMember.Categories = _context.Categories.ToList();
+            return View(aMember);
+        }
     }
 }
