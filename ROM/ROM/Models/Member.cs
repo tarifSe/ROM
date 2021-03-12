@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,5 +17,8 @@ namespace ROM.Models
         [Display(Name = "Category Name")]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        [NotMapped]
+        public List<Category> Categories { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace ROM.Controllers
 {
     public class MembersController : Controller
     {
+        Member aMember = new Member();
         private readonly ROMDatabaseContext _context;
         public MembersController(ROMDatabaseContext romDbContext)
         {
@@ -23,7 +24,8 @@ namespace ROM.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            aMember.Categories = _context.Categories.ToList();
+            return View(aMember);
         }
     }
 }
