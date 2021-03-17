@@ -92,5 +92,18 @@ namespace ROM.Controllers
             }
             return View(member);
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var member = _context.Members.Find(id);
+            if (member == null)
+            {
+                return NotFound();
+            }
+            _context.Remove(member);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
