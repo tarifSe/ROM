@@ -17,5 +17,7 @@ namespace ROM.DBContext
         public DbSet<ROMTestModel> ROMTestModels { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
     }
 }

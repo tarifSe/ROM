@@ -40,10 +40,10 @@ namespace ROM.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            //else
-            //{
-            //    ViewBag.ErrorMsg = "Save Failed!";
-            //}
+            else
+            {
+                ViewBag.ValidationMsg = "All fields are required";
+            }
 
             aMember.Categories = _context.Categories.ToList();
             return View(aMember);
