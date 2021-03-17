@@ -36,8 +36,14 @@ namespace ROM.Controllers
             {
                 _context.Members.Add(member);
                 _context.SaveChanges();
+                //ViewBag.SuccessMsg = "Save Success.";
+
                 return RedirectToAction(nameof(Index));
             }
+            //else
+            //{
+            //    ViewBag.ErrorMsg = "Save Failed!";
+            //}
 
             aMember.Categories = _context.Categories.ToList();
             return View(aMember);
@@ -74,6 +80,16 @@ namespace ROM.Controllers
                 return RedirectToAction(nameof(Index));
             }
             
+            return View(member);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            var member = _context.Members.FirstOrDefault(d => d.Id == id);
+            if (member == null)
+            {
+                return NotFound();
+            }
             return View(member);
         }
     }
