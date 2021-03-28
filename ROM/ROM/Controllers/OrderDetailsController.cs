@@ -24,7 +24,31 @@ namespace ROM.Controllers
         public IActionResult Save()
         {
             aNOrderDetails.Members = _context.Members.ToList();
+            aNOrderDetails.Foods = _context.Foods.ToList();
             return View (aNOrderDetails);
+        }
+
+        [HttpPost]
+        public IActionResult Save(OrderDetails orderDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.OrderDetails.Add(orderDetails);
+                int isExucuted = _context.SaveChanges();
+                return RedirectToAction(nameof(Save));
+                //if (isExucuted == 1)
+                //{
+                //    ViewBag.SuccessMsg = "Save Success.";
+                //}
+                //else
+                //{
+                //    ViewBag.ErrorMsg = "Save Faild!";
+                //}
+            }
+
+            aNOrderDetails.Members = _context.Members.ToList();
+            aNOrderDetails.Foods = _context.Foods.ToList();
+            return View(aNOrderDetails);
         }
     }
 }
