@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Name</label>
-                <input class="form-control" />
+                <input id="Name" class="form-control" />
             </div>
 
 
@@ -63,8 +63,26 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script>
+        //import { post } from "jquery";
+
         $('#Member').change(() => {
             var memberId = $('#Member').val();
+
+            var jsonData = { memberId: memberId };
+
+            $.ajax(
+                {
+                    url: "/OrderDetails/GetByMemberId",
+                    type: "POST",
+                    data: jsonData,
+                    success: (member) => {
+                        var memberNames = "<input asp-for='" + member.memberNames + "' />";
+                        $('#Name').append(memberNames)
+                    },
+                    error: (response) => {
+
+                    }
+                });
 
         });
     </script>

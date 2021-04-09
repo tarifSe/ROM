@@ -52,10 +52,10 @@ namespace ROM.Controllers
             return View(aNOrderDetails);
         }
 
-        public IActionResult GetByMemberId(int memberId)
+        public JsonResult GetByMemberId(int memberId)
         {
             var member = _context.Members.FirstOrDefault(m => m.Id == memberId);
-            return Json(member, JsonRequestBehavior.AllowGet);
+            return Json(member);
         }
 
     }
