@@ -12,6 +12,7 @@ namespace ROM.Controllers
     {
         private readonly ROMDatabaseContext _context;
         OrderDetails aNOrderDetails = new OrderDetails();
+        Member aMember = new Member();
         public OrderDetailsController(ROMDatabaseContext rOMDatabaseContext)
         {
             _context = rOMDatabaseContext;
@@ -50,5 +51,12 @@ namespace ROM.Controllers
             aNOrderDetails.Foods = _context.Foods.ToList();
             return View(aNOrderDetails);
         }
+
+        public IActionResult GetByMemberId(int memberId)
+        {
+            var member = _context.Members.FirstOrDefault(m => m.Id == memberId);
+            return Json(member, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
