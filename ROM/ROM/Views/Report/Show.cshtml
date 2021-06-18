@@ -1,0 +1,32 @@
+﻿@model ROM.Models.OrderDetails
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Report Viewer</h1>
+<hr />
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Show">
+            <div class="form-group">
+                <label class="control-label">Member Code</label>
+                <select asp-for="MemberId" class="form-control">
+                    @foreach (var member in Model.Members)
+                    {
+                        <option value="@member.Id">@member.Code</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Show" class="btn btn-primary form-control" />
+            </div>
+        </form>
+    </div>
+</div>
