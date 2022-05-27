@@ -1,1 +1,1 @@
-# ROM
+# Restaurant Order Management system. It's a small application to manage order of a restaurant. There are three parts of this small application. Member Entry, Order for Food and View Report. This Application developed by ASP.NET MVC Core 3.1 and Database MS SQL Server
