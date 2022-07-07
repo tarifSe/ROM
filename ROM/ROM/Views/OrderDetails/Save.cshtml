@@ -15,26 +15,75 @@
 <h1>Order for food</h1>
 <hr />
 
+<form asp-action="Save">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Member Code</label>
+        <div class="col-sm-5">
+            <select asp-for="MemberId" id="member" class="form-control">
+                @foreach (var item in Model.Members)
+                {
+                    <option value="@item.Id">@item.Code</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-5">
+            <input id="name" class="form-control" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-5">
+            <input id="email" class="form-control" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-5">
+            <input id="email" class="form-control" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Contact No</label>
+        <div class="col-sm-5">
+            <input id="contact" class="form-control" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Type</label>
+        <div class="col-sm-5">
+            <input id="type" class="form-control" readonly="readonly" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="FoodId" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-5">
+            <select asp-for="FoodId" id="Food" class="form-control">
+                @foreach (var food in Model.Foods)
+                {
+                    <option value="@food.Id">@food.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Type</label>
+        <div class="col-sm-5">
+            <input id="type" class="form-control" readonly="readonly" />
+        </div>
+    </div>
+</form>
+
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Save">
-            <div class="form-group">
-                <label class="control-label">Member Code</label>
-                <select asp-for="MemberId" id="Member" class="form-control">
-                    @foreach (var item in Model.Members)
-                    {
-                        <option value="@item.Id">@item.Code</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Name</label>
-                <input id="Name" class="form-control" />
-            </div>
-
-
-
-            <div class="form-group">
+            
+          
+            @*<div class="form-group">
                 <label asp-for="FoodId" class="control-label"></label>
                 <select asp-for="FoodId" class="form-control">
                     @foreach (var food in Model.Foods)
@@ -42,7 +91,8 @@
                         <option value="@food.Id">@food.Name</option>
                     }
                 </select>
-            </div>
+            </div>*@
+
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
                 <input asp-for="Quantity" class="form-control" />
@@ -60,31 +110,9 @@
 </div>
 
 @section Scripts {
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-    <script>
-        //import { post } from "jquery";
 
-        $('#Member').change(() => {
-            var memberId = $('#Member').val();
-
-            var jsonData = { memberId: memberId };
-
-            $.ajax(
-                {
-                    url: "/OrderDetails/GetByMemberId",
-                    type: "POST",
-                    data: jsonData,
-                    success: (member) => {
-                        var memberNames = "<input asp-for='" + member. + "' />";
-                        $('#Name').append(memberNames)
-                    },
-                    error: (response) => {
-
-                    }
-                });
-
-        });
-    </script>
 }
 
