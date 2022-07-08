@@ -9,14 +9,30 @@ $('#member').change(function () {
     var memberId = $('#member').val();
 
     $.ajax({
-        url: "/OrderDetails/GetMember",
+        url: "/OrderDetails/GetMemberDetails",
         type: "POST",
         data: { memberId: memberId },
         success: function (member) {
             $('#name').val(member.name);
             $('#email').val(member.email);
             $('#contact').val(member.phone);
-            $('#type').val(member.category.name);
+            $('#memberType').val(member.category.name);
+        },
+        error: function (response) {
+
+        }
+    });
+});
+
+$('#food').change(function () {
+    var foodID = $('#food').val();
+
+    $.ajax({
+        url: "/OrderDetails/GetFoodDetails",
+        type: "POST",
+        data: { foodId: foodID },
+        success: function (food) {
+            $('#price').val(food.unitPrice);
         },
         error: function (response) {
 

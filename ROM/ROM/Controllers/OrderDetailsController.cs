@@ -53,11 +53,16 @@ namespace ROM.Controllers
             return View(aNOrderDetails);
         }
 
-        public JsonResult GetMember(int memberId)
+        public JsonResult GetMemberDetails(int memberId)
         {
             var member = _context.Members.Include(c=>c.Category).FirstOrDefault(m => m.Id == memberId);
             return Json(member);
         }
 
+        public JsonResult GetFoodDetails(int foodId)
+        {
+            var food = _context.Foods.FirstOrDefault(f => f.Id == foodId);
+            return Json(food);
+        }
     }
 }
