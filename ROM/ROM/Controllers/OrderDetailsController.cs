@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ROM.DBContext;
 using ROM.Models;
 using System;
@@ -52,9 +53,9 @@ namespace ROM.Controllers
             return View(aNOrderDetails);
         }
 
-        public JsonResult GetByMemberId(int memberId)
+        public JsonResult GetMember(int memberId)
         {
-            var member = _context.Members.FirstOrDefault(m => m.Id == memberId);
+            var member = _context.Members.Include(c=>c.Category).FirstOrDefault(m => m.Id == memberId);
             return Json(member);
         }
 
