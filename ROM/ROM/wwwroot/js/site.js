@@ -24,14 +24,14 @@ $('#member').change(function () {
     });
 });
 
-$('#food').change(function () {
+$('#food').change(() => {
     var foodID = $('#food').val();
 
     $.ajax({
         url: "/OrderDetails/GetFoodDetails",
         type: "POST",
         data: { foodId: foodID },
-        success: function (food) {
+        success: (food) => {
             $('#price').val(food.unitPrice);
         },
         error: function (response) {
