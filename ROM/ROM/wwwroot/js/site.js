@@ -42,9 +42,7 @@ $('#food').change(() => {
 
 $('#btnClick').click(function () {
     var memberId = $('#member').val();
-    //var date = $('#date').datepicker('getDate')
     var date = $('#date').val();
-    console.log(date);
 
     $.ajax({
         url: "/Report/OrderDetails",
