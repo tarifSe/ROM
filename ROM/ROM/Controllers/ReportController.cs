@@ -32,9 +32,9 @@ namespace ROM.Controllers
             return View(aNOrderDetails);
         }
 
-        public JsonResult OrderDetails(int memberId)
+        public JsonResult OrderDetails(int memberId, DateTime date)
         {
-            var orderItem = _context.OrderDetails.Where(c => c.MemberId == memberId).Include(f=>f.Food).ToList();
+            var orderItem = _context.OrderDetails.Where(c => c.MemberId == memberId && c.DateTime==date).Include(f=>f.Food).ToList();
             return Json(orderItem);
         }
     }

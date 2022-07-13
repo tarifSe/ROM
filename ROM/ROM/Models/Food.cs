@@ -10,7 +10,7 @@ namespace ROM.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        [Display(Name="Price")]
+        [Display(Name="Total Price")]
         public double UnitPrice { get; set; }
     }
 }
