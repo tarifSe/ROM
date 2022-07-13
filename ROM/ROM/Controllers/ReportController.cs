@@ -30,5 +30,11 @@ namespace ROM.Controllers
             aNOrderDetails.Members = _context.Members.ToList();
             return View(aNOrderDetails);
         }
+
+        public JsonResult OrderDetails(int memberId)
+        {
+            var orderItem = _context.OrderDetails.Where(c => c.MemberId == memberId).ToList();
+            return Json(orderItem);
+        }
     }
 }

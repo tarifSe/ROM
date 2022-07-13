@@ -39,3 +39,19 @@ $('#food').change(() => {
         }
     });
 });
+
+$('#btnClick').click(function () {
+    var memberId = $('#member').val();
+
+    $.ajax({
+        url: "/Report/OrderDetails",
+        type: "POST",
+        data: { memberId: memberId },
+        success: (data) => {
+
+        },
+        error: (respons) => {
+
+        }
+    });
+});
