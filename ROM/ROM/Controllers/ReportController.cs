@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ROM.DBContext;
 using ROM.Models;
 using System;
@@ -33,7 +34,7 @@ namespace ROM.Controllers
 
         public JsonResult OrderDetails(int memberId)
         {
-            var orderItem = _context.OrderDetails.Where(c => c.MemberId == memberId).ToList();
+            var orderItem = _context.OrderDetails.Where(c => c.MemberId == memberId).Include(f=>f.Food).ToList();
             return Json(orderItem);
         }
     }

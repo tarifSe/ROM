@@ -48,7 +48,18 @@ $('#btnClick').click(function () {
         type: "POST",
         data: { memberId: memberId },
         success: (data) => {
+            var sl = 1;
+            var sum = 0;
+            $('#tBody').empty();
+            $('#price').empty();
 
+            $.each(data, (key, item) => {
+                var tr = "<tr><td>" + (sl++) + "</td> <td>" + item.food.name + "</td> <td>" + item.quantity + "</td> <td>" + item.food.unitPrice + "</td></tr>";
+                $('#tBody').append(tr);
+
+                sum += item.food.unitPrice;
+                $('#price').text('Total Amount: ' + sum + 'Tk');
+            });
         },
         error: (respons) => {
 
