@@ -85,7 +85,7 @@ namespace ROM.Controllers
 
         public IActionResult Delete(int? id)
         {
-            var member = _context.Members.FirstOrDefault(d => d.Id == id);
+            var member = _context.Members.Include(c=>c.Category).FirstOrDefault(d => d.Id == id);
             if (member == null)
             {
                 return NotFound();
