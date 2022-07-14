@@ -32,11 +32,19 @@ namespace ROM.Controllers
         [HttpPost]
         public IActionResult Add(Member member)
         {
+            aMember.Categories = _context.Categories.ToList();
+
             if (ModelState.IsValid)
             {
+                if (MemberIsExists(member.Code))
+                {
+                    ViewBag.UniqeChk = "Sorry, Member already exists! Code must be unique.";
+                    return View(aMember);
+                }
+
                 _context.Members.Add(member);
                 _context.SaveChanges();
-                //ViewBag.SuccessMsg = "Save Success.";
+                ViewBag.SuccessMsg = "Save Success.";
 
                 return RedirectToAction(nameof(Index));
             }
@@ -45,7 +53,6 @@ namespace ROM.Controllers
                 ViewBag.ValidationMsg = "All fields are required";
             }
 
-            aMember.Categories = _context.Categories.ToList();
             return View(aMember);
         }
 
@@ -104,6 +111,12 @@ namespace ROM.Controllers
             _context.Remove(member);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
+        }
+
+
+        private bool MemberIsExists(string code)
+        {
+            return _context.Members.Any(c => c.Code == code);
         }
     }
 }
