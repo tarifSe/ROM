@@ -44,7 +44,7 @@ namespace ROM.Controllers
 
                 _context.Members.Add(member);
                 _context.SaveChanges();
-                ViewBag.SuccessMsg = "Save Success.";
+                TempData["saveMsg"] = "The Member has been saved successfully.";
 
                 return RedirectToAction(nameof(Index));
             }
