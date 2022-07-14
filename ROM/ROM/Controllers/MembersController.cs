@@ -82,9 +82,15 @@ namespace ROM.Controllers
 
             if (ModelState.IsValid)
             {
+                if (MemberIsExists(member.Code))
+                {
+                    ViewBag.UniqeChk = "Sorry, Member already exists! Code must be unique.";
+                    return View(aMember);
+                }
+                
                 _context.Members.Update(member);
                 _context.SaveChanges();
-                TempData["saveMsg"] = "Member has been updated successfully.";
+                TempData["saveMsg"] = "The Member has been updated successfully.";
                 return RedirectToAction(nameof(Index));
             }
             
@@ -111,7 +117,7 @@ namespace ROM.Controllers
             }
             _context.Remove(member);
             _context.SaveChanges();
-            TempData["saveMsg"] = "Member has been deleted successfully.";
+            TempData["saveMsg"] = "The Member has been deleted successfully.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -119,6 +125,24 @@ namespace ROM.Controllers
         private bool MemberIsExists(string code)
         {
             return _context.Members.Any(c => c.Code == code);
+        }
+
+        private bool MemberIsExistsForUpdate(string code, int id)
+        {
+            List<Member> shortedMembers = new List<Member>();
+
+            var members = _context.Members.Include(c => c.Category).ToList();
+            var mem = _context.Members.FirstOrDefault(c => c.Id == id);
+
+            foreach (var member in members)
+            {
+                if (member.Id != mem.Id)
+                {
+                    shortedMembers.Add(member);
+                }
+            }
+            bool rs= shortedMembers.Any(c => c.Code == code);
+            return rs;
         }
     }
 }
