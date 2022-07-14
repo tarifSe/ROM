@@ -84,6 +84,7 @@ namespace ROM.Controllers
             {
                 _context.Members.Update(member);
                 _context.SaveChanges();
+                TempData["saveMsg"] = "Member has been updated successfully.";
                 return RedirectToAction(nameof(Index));
             }
             
@@ -110,6 +111,7 @@ namespace ROM.Controllers
             }
             _context.Remove(member);
             _context.SaveChanges();
+            TempData["saveMsg"] = "Member has been deleted successfully.";
             return RedirectToAction(nameof(Index));
         }
 

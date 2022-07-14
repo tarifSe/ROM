@@ -70,3 +70,6 @@ $('#btnClick').click(function () {
         }
     });
 });
+
+//post saved msg remove
+$('#divRemove').fadeOut(8000);

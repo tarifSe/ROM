@@ -13,7 +13,7 @@
     <div class="col-sm-6">
         @if (TempData["saveMsg"] != null)
         {
-        <div class="text-success text-right" id="div">
+        <div class="text-success text-right" id="divRemove">
             <h5><strong>Success! </strong> @TempData["saveMsg"]</h5>
         </div>
         }
@@ -64,14 +64,12 @@
 
 
 
-@section Scripts{ 
+@*@section Scripts{ 
 
     <script>
         $(document).ready(function () {
-            $('#div').click(() => {
-                $('#div').remove();
-            });
+            $('#div').fadeOut(6000);
         });
     </script>
 
-}
+}*@
