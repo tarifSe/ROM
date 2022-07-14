@@ -58,7 +58,7 @@ $('#btnClick').click(function () {
 
             $.each(data, (key, item) => {
                 totalPrice = item.food.unitPrice * item.quantity;
-                var tr = "<tr><td>" + (sl++) + "</td> <td>" + item.food.name + "</td> <td>" + item.quantity + "</td> <td>" + totalPrice + "</td></tr>";
+                var tr = "<tr><td>" + (sl++) + "</td> <td>" + item.food.name + "</td> <td>" + item.food.unitPrice + "</td> <td>" + item.quantity + "</td> <td>" + totalPrice + "</td></tr>";
                 $('#tBody').append(tr);
 
                 grandTotal += totalPrice;
