@@ -3,7 +3,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h2>Edit Member</h2>
 <hr />
 
 
@@ -30,8 +30,14 @@
                 <label asp-for="CategoryId" class="control-label"></label>
                 @Html.DropDownListFor(c =>c.CategoryId,ViewBag.Category as SelectList, new { @class="form-control"})
             </div>
-            <div>
-                <input type="submit" value="Update" class="btn btn-warning form-control" />
+            
+            <div class="row">
+                <div class="col-sm-7">
+                    <input type="submit" value="Update" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-sm-5">
+                    <a asp-action="Index" class="btn btn-info form-control">Back to list</a>
+                </div>
             </div>
         </form>
     </div>
@@ -39,6 +45,6 @@
 
 
 <div>
-    <a asp-action="Index">Back to list</a>
+    
 </div>
 
