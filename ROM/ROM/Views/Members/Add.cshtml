@@ -4,17 +4,18 @@
 }
 
 @*@if (ViewBag.SuccessMsg != null)
-{
-    <h4>@ViewBag.SuccessMsg</h4>
-}*@
+    {
+        <h4>@ViewBag.SuccessMsg</h4>
+    }*@
+
+
+<h2 class="">Add new member here.</h2>
+<hr />
+
 @if (ViewBag.ValidationMsg != null)
 {
     <h4 class="text-danger">@ViewBag.ValidationMsg</h4>
 }
-
-<h1 class="text-success">Add new member here.</h1>
-<hr />
-
 
 <div class="row">
     <div class="col-md-4">
@@ -44,16 +45,19 @@
                     }
                 </select>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-success form-control" />
+
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-success form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <a asp-action="Index" class="btn btn-info form-control">Back to list</a>
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-
-<div>
-    <a asp-action="Index">Back to list</a>
 </div>
 
 

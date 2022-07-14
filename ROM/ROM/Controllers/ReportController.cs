@@ -21,8 +21,6 @@ namespace ROM.Controllers
 
         public IActionResult Index()
         {
-            //aNOrderDetails.Members = _context.Members.ToList();
-            //return View(aNOrderDetails);
             return View();
         }
 
