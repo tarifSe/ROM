@@ -9,6 +9,7 @@ namespace ROM.Models
     public class Food
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
         [Display(Name= "Unit Price")]
         public double UnitPrice { get; set; }
