@@ -97,20 +97,3 @@ function myFunc() {
     }
 }
 
-
-
-//$('#saveBtn').click(() => {
-//    var codeNum = $('#code').val();
-
-//    if (codeNum == '') {
-//        $('#showMsg').text('The Code field is required.');
-//        return false;
-//    }
-//    else if (codeNum.length > 5 || codeNum.length < 5) {
-//        $('#showMsg').text('Code number must be 5 digits.');
-//        return false;
-//    }
-//    else {
-//        $('#showMsg').empty();
-//    }
-//});
