@@ -18,12 +18,12 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Add">
+        <form asp-action="Add" onsubmit="return myFunc()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Code" class="control-label"></label>
-                <input asp-for="Code" class="form-control" />
-                <span asp-validation-for="Code" class="text-danger"></span>
+                <input asp-for="Code" class="form-control" id="code"/>
+                <span id="showMsg" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-sm-7">
                     <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-success form-control" />
+                        <input type="submit" value="Save" class="btn btn-success form-control" id="saveBtn" />
                     </div>
                 </div>
                 <div class="col-sm-5">

@@ -74,6 +74,43 @@ $('#btnClick').click(function () {
 //post saved msg remove
 $('#divRemove').fadeOut(8000);
 
+// validation msg remove
 $('#validationMsg').click(() => {
     $('#validationMsg').remove();
-})
+});
+
+
+// Code exact digit validation in Member entry
+function myFunc() {
+    var codeNum = document.getElementById('code').value;
+
+    if (codeNum == '') {
+        document.getElementById('showMsg').innerHTML = 'The Code field is required.';
+        return false;
+    }
+    else if (codeNum.length > 5 || codeNum.length < 5) {
+        document.getElementById('showMsg').innerHTML = 'Code number exact 5 characters long.';
+        return false;
+    }
+    else {
+        $('#showMsg').empty();
+    }
+}
+
+
+
+//$('#saveBtn').click(() => {
+//    var codeNum = $('#code').val();
+
+//    if (codeNum == '') {
+//        $('#showMsg').text('The Code field is required.');
+//        return false;
+//    }
+//    else if (codeNum.length > 5 || codeNum.length < 5) {
+//        $('#showMsg').text('Code number must be 5 digits.');
+//        return false;
+//    }
+//    else {
+//        $('#showMsg').empty();
+//    }
+//});
