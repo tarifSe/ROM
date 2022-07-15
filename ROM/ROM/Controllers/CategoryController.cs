@@ -33,6 +33,7 @@ namespace ROM.Controllers
             {
                 _context.Add(category);
                 _context.SaveChanges();
+                TempData["saveMsg"] = "Category has been Saved successfully.";
                 return RedirectToAction("Index");
             }
             
@@ -61,6 +62,7 @@ namespace ROM.Controllers
             {
                 _context.Update(category);
                 _context.SaveChanges();
+                TempData["saveMsg"] = "Category has been Updated.";
                 return RedirectToAction("Index");
             }
             
@@ -88,6 +90,7 @@ namespace ROM.Controllers
             var category = _context.Categories.Find(id);
             _context.Remove(category);
             _context.SaveChanges();
+            TempData["saveMsg"] = "Category has been deleted!";
             return RedirectToAction(nameof(Index));
         }
     }

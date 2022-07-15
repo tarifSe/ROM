@@ -6,9 +6,19 @@
 <h2 class="alert alert-info">Category Information</h2>
 <hr />
 
-@*<p class="text-info"><b>Work in progress...</b></p>*@
-
-<p><a asp-action="Save" class="btn btn-outline-primary">Add New Category</a></p>
+<div class="form-group row">
+    <div class="col-sm-6">
+        <a asp-action="Save" class="btn btn-outline-primary">Add New Category</a>
+    </div>
+    <div class="col-sm-6">
+        @if (TempData["saveMsg"] != null)
+        {
+            <div class="text-success text-right" id="divRemove">
+                <h5><strong>Success! </strong> @TempData["saveMsg"]</h5>
+            </div>
+        }
+    </div>
+</div>
 
 <table class="table table-dark">
     <thead>
