@@ -60,6 +60,7 @@ namespace ROM.Controllers
             {
                 _context.Add(food);
                 await _context.SaveChangesAsync();
+                TempData["saveMsg"] = "Food has been saved successfully.";
                 return RedirectToAction(nameof(Index));
             }
             return View(food);
@@ -99,6 +100,7 @@ namespace ROM.Controllers
                 {
                     _context.Update(food);
                     await _context.SaveChangesAsync();
+                    TempData["saveMsg"] = "Food has been updated successfully.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -142,6 +144,7 @@ namespace ROM.Controllers
             var food = await _context.Foods.FindAsync(id);
             _context.Foods.Remove(food);
             await _context.SaveChangesAsync();
+            TempData["saveMsg"] = "Food has been deleted!";
             return RedirectToAction(nameof(Index));
         }
 

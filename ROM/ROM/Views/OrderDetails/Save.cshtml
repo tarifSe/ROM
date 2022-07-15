@@ -3,17 +3,23 @@
     ViewData["Title"] = "Save";
 }
 
-@if (ViewBag.SuccessMsg != null)
-{
-    <h4 class="text-success">@ViewBag.SuccessMsg</h4>
-}
-@if (ViewBag.ErrorMsg != null)
-{
-    <h4 class="text-danger">@ViewBag.ErrorMsg</h4>
-}
+
 
 <h2 class="alert alert-primary">Order For Food</h2>
 <hr />
+
+@if (TempData["saveMsg"] != null)
+{
+    <div class="text-success text-right" id="divRemove">
+        <h5><strong>Success! </strong> @TempData["saveMsg"]</h5>
+    </div>
+}
+@if (TempData["errorMsg"] != null)
+{
+    <div class="text-success text-right" id="divRemove">
+        <h5><strong>Faild! </strong> @TempData["errorMsg"]</h5>
+    </div>
+}
 
 <form asp-action="Save">
     <div class="form-group row">

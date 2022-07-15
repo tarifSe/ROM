@@ -33,19 +33,21 @@ namespace ROM.Controllers
         [HttpPost]
         public IActionResult Save(OrderDetails orderDetails)
         {
+            int isExucuted = 0;
             if (ModelState.IsValid)
             {
                 _context.OrderDetails.Add(orderDetails);
-                int isExucuted = _context.SaveChanges();
+                isExucuted = _context.SaveChanges();
+                if (isExucuted == 1)
+                {
+                    TempData["saveMsg"] = "Order successfully done.";
+                }
+                else
+                {
+                    TempData["errorMsg"] = "Save Faild!";
+                }
                 return RedirectToAction(nameof(Save));
-                //if (isExucuted == 1)
-                //{
-                //    ViewBag.SuccessMsg = "Save Success.";
-                //}
-                //else
-                //{
-                //    ViewBag.ErrorMsg = "Save Faild!";
-                //}
+                
             }
 
             aNOrderDetails.Members = _context.Members.ToList();
