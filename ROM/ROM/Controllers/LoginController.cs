@@ -45,9 +45,5 @@ namespace ROM.Controllers
             return users;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }
