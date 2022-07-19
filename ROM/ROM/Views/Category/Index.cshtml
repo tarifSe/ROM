@@ -25,6 +25,7 @@
         <tr>
             <th>SL/No</th>
             <th>@Html.DisplayNameFor(m => m.Name)</th>
+            <th></th>
             <th>Action</th>
         </tr>
     </thead>
@@ -40,8 +41,9 @@
                 @Html.DisplayFor(c => category.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@category.Id" class="btn btn-warning">Edit</a>
-                <a asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger">Delete</a>
+                @*<a asp-action="Edit" asp-route-id="@category.Id" class="btn btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger">Delete</a>*@
+                <partial name="_ButtonPartial" model="@category.Id">
             </td>
         </tr>
         }
