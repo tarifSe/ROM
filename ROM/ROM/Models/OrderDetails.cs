@@ -13,6 +13,7 @@ namespace ROM.Models
         [Required]
         public float Quantity { get; set; }
         [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime DateTime { get; set; }
 
         public int MemberId { get; set; }
