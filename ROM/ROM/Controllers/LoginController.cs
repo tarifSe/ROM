@@ -37,7 +37,7 @@ namespace ROM.Controllers
             var users = new List<UserViewModel>
             {
                 new UserViewModel{Id=1, UserName="tarif", Password="abc100"},
-                new UserViewModel{Id=2, UserName="roms", Password="abc101"},
+                new UserViewModel{Id=2, UserName="admin", Password="12345"},
                 new UserViewModel{Id=3, UserName="shapla", Password="abc102"},
                 new UserViewModel{Id=4, UserName="golap", Password="abc103"},
                 new UserViewModel{Id=5, UserName="doyel", Password="abc104"}
