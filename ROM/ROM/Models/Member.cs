@@ -23,7 +23,7 @@ namespace ROM.Models
         [Required]
         public string Phone { get; set; }
 
-        [Display(Name = "Category Name")]
+        [Display(Name = "Member Type")]
         [Required]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
